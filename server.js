@@ -2,7 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const port = 8081;
 const hostname = 'localhost';
-const mysql = require('mysql')
+
+const db = require('./db')
 
 const app = express();
 
@@ -11,15 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);//attach body-parser middleware
 app.use(bodyParser.json());//parse json data
 
-const db = mysql.createConnection({
-    host:'localhost',
-    port:3306,
-    user: 'admin',
-    password: 'password',
-    database:'library'
-})
 
-db.connect();
 
 // routes
 // maps a URL to a function
